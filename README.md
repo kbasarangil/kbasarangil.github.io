@@ -1,2 +1,0 @@
-# kbasarangil.github.io
-
