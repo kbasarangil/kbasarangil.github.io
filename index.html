@@ -1,141 +1,327 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budbud - Terms of Use and Privacy Policy</title>
+    <title>Kenan Başarangil - Mobil Uygulama Geliştirici</title>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f0f2f8;
             color: #333;
+            min-height: 100vh;
         }
-        h1 {
-            color: #2c3e50;
+        .header {
+            background: linear-gradient(135deg, #052659 0%, #5483B3 50%, #7DA0CA 100%);
+            color: white;
+            padding: 50px 20px 80px;
             text-align: center;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #eee;
+            position: relative;
         }
-        h2 {
-            color: #34495e;
-            margin-top: 30px;
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: #f0f2f8;
+            border-radius: 40px 40px 0 0;
         }
-        ul {
-            padding-left: 20px;
+        .avatar {
+            width: 90px;
+            height: 90px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            border: 3px solid rgba(255,255,255,0.3);
         }
-        li {
-            margin: 10px 0;
+        .header h1 { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .container {
+            max-width: 780px;
+            margin: -20px auto 0;
+            padding: 0 16px 40px;
+            position: relative;
+            z-index: 1;
         }
+        .about-card {
+            background: white;
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(5,38,89,0.08);
+        }
+        .about-card h2 {
+            font-size: 18px;
+            color: #052659;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .about-card h2 span { font-size: 20px; }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        @media (max-width: 500px) {
+            .about-grid { grid-template-columns: 1fr; }
+        }
+        .about-item {
+            background: #f8f9fd;
+            border-radius: 12px;
+            padding: 14px;
+            border-left: 3px solid #5483B3;
+        }
+        .about-item .label {
+            font-size: 11px;
+            color: #5483B3;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .about-item .value { font-size: 14px; color: #333; line-height: 1.4; }
+        .about-note {
+            margin-top: 16px;
+            padding: 14px;
+            background: linear-gradient(135deg, rgba(5,38,89,0.04), rgba(84,131,179,0.06));
+            border-radius: 12px;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+            text-align: center;
+        }
+        .section-title {
+            font-size: 18px;
+            color: #052659;
+            margin-bottom: 16px;
+            padding-left: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title span { font-size: 20px; }
+        .app-card {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 20px rgba(5,38,89,0.08);
+            transition: transform 0.2s;
+        }
+        .app-card:hover { transform: translateY(-2px); }
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 14px;
+        }
+        .app-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+        .app-icon-budbud { background: linear-gradient(135deg, #4CAF50, #66BB6A); }
+        .app-icon-buddacv { background: linear-gradient(135deg, #7B61FF, #9C88FF); }
+        .app-icon-dilekce { background: linear-gradient(135deg, #052659, #5483B3); }
+        .app-title { font-size: 17px; font-weight: 700; color: #052659; }
+        .app-tagline { font-size: 13px; color: #888; margin-top: 2px; }
+        .app-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+        .badge-live { background: #E8F5E9; color: #2E7D32; }
+        .badge-soon { background: #FFF3E0; color: #E65100; }
+        .app-desc {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .store-badges {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .store-badges a {
+            display: inline-block;
+            transition: opacity 0.2s;
+        }
+        .store-badges a:hover { opacity: 0.8; }
+        .badge-appstore {
+            height: 40px;
+        }
+        .badge-playstore {
+            height: 60px;
+            margin: -10px 0;
+        }
+        .app-other-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .link-btn:hover { opacity: 0.8; }
+        .link-privacy { background: #f0f2f8; color: #5483B3; }
+        .link-website { background: #f0f2f8; color: #052659; }
         .footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
             text-align: center;
-            color: #666;
+            padding: 30px 20px;
+            margin-top: 10px;
         }
+        .footer-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            text-decoration: none;
+            color: #052659;
+            font-size: 14px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .footer-contact:hover { transform: translateY(-2px); }
+        .footer-contact span { font-size: 18px; }
+        .copyright { margin-top: 16px; font-size: 12px; color: #999; }
     </style>
 </head>
 <body>
-    <h1>Budbud Financial Management Application Terms of Use and Privacy Policy</h1>
-
-    <h2>1. Application Usage</h2>
-    <ul>
-        <li>Budbud is a tool designed for personal finance management.</li>
-        <li>The application offers a 3-day free trial period.</li>
-        <li>A one-time payment is required for full version access after the trial period.</li>
-    </ul>
-
-    <h2>2. Purchase and Payment</h2>
-    <ul>
-        <li>The purchase is one-time and non-refundable.</li>
-        <li>Payment is processed through Google Play Store or App Store.</li>
-        <li>Purchase provides unlimited access to all current and future features of the application.</li>
-        <li>Purchase is linked to your account and valid on all devices logged in with the same account.</li>
-    </ul>
-
-    <h2>3. Data Usage and Privacy</h2>
-    <ul>
-        <li>The application stores your financial data only on your device and/or in your chosen cloud backup location.</li>
-        <li>User data is not shared with third parties.</li>
-        <li>Cloud backup feature is optional for users.</li>
-        <li>All data is stored encrypted.</li>
-    </ul>
-
-    <h2>4. User Responsibilities</h2>
-    <ul>
-        <li>Users are responsible for entering accurate and current financial information.</li>
-        <li>Users are responsible for verifying the accuracy of transactions made through the application.</li>
-        <li>Users are responsible for maintaining the security of their account information.</li>
-    </ul>
-
-    <h2>5. Disclaimer</h2>
-    <ul>
-        <li>The application is provided "as is."</li>
-        <li>The application does not provide professional financial advice.</li>
-        <li>Regular backup of your data is recommended.</li>
-        <li>The application cannot be held responsible for financial losses resulting from application use.</li>
-    </ul>
-
-    <h2>6. Technical Requirements</h2>
-    <ul>
-        <li>The application runs on current Android or iOS operating systems.</li>
-        <li>Some features may require internet connection.</li>
-        <li>Regular updates are recommended.</li>
-    </ul>
-
-    <h2>7. Communication and Support</h2>
-    <ul>
-        <li>For technical support, you can email support@budbudapp.com</li>
-        <li>For suggestions and feedback, you can use feedback@budbudapp.com</li>
-    </ul>
-
-    <h2>8. Changes</h2>
-    <ul>
-        <li>These terms and conditions may be updated without prior notice.</li>
-        <li>Significant changes will be notified through the application.</li>
-    </ul>
-
-    <h2>9. Termination</h2>
-    <ul>
-        <li>Users can stop using the application at any time.</li>
-        <li>Account access may be restricted in cases of misuse.</li>
-    </ul>
-
-    <h2>10. Privacy Policy</h2>
-    <h3>Collected Data:</h3>
-    <ul>
-        <li>Account information</li>
-        <li>Transaction records</li>
-        <li>User preferences</li>
-    </ul>
-
-    <h3>Data Usage:</h3>
-    <ul>
-        <li>Data is used only for application functionality</li>
-        <li>Analytics data is collected anonymously</li>
-        <li>Personal data is not shared with third parties</li>
-    </ul>
-
-    <h3>Data Security:</h3>
-    <ul>
-        <li>All data is protected with industry-standard encryption</li>
-        <li>Regular security updates are performed</li>
-        <li>Users will be notified in case of data breach</li>
-    </ul>
-
-    <h2>Acceptance of Terms</h2>
-    <p>By accepting these terms, you declare that:</p>
-    <ul>
-        <li>You have read and understood all the above terms</li>
-        <li>You are over 18 years old</li>
-        <li>You accept these terms</li>
-    </ul>
-
+    <div class="header">
+        <div class="avatar">👨‍💻</div>
+        <h1>Kenan Başarangil</h1>
+        <p class="subtitle">Mobil Uygulama Geliştirici</p>
+    </div>
+ 
+    <div class="container">
+        <div class="about-card">
+            <h2><span>👤</span> Hakkımda</h2>
+            <div class="about-grid">
+                <div class="about-item">
+                    <div class="label">Eğitim</div>
+                    <div class="value">Anadolu Üniversitesi<br>Lisans – İktisat<br>Yüksek Lisans – İşletme Yönetimi</div>
+                </div>
+                <div class="about-item">
+                    <div class="label">Uzmanlık Alanı</div>
+                    <div class="value">Türkiye Sermaye Piyasaları</div>
+                </div>
+                <div class="about-item">
+                    <div class="label">Deneyim</div>
+                    <div class="value">12 Yıl<br>Yatırım Danışmanı, Şube Müdürü</div>
+                </div>
+                <div class="about-item">
+                    <div class="label">Hobi</div>
+                    <div class="value">Mobil Uygulama Geliştirme<br>Flutter & Dart</div>
+                </div>
+            </div>
+            <div class="about-note">
+                Finans sektöründeki profesyonel kariyerimin yanı sıra, arda kalan vakitlerimde mobil uygulama geliştirerek hayatı kolaylaştıran çözümler üretiyorum.
+            </div>
+        </div>
+ 
+        <h2 class="section-title"><span>📱</span> Uygulamalar</h2>
+ 
+        <!-- Budbud -->
+        <div class="app-card">
+            <div class="app-header">
+                <div class="app-icon app-icon-budbud">💰</div>
+                <div>
+                    <div class="app-title">Budbud</div>
+                    <div class="app-tagline">Gelir & Harcama Takip Uygulaması</div>
+                    <div class="app-badge badge-live">● Yayında</div>
+                </div>
+            </div>
+            <p class="app-desc">Bütçe, gelir-gider takibi ve finansal analiz için hazırlanmış kapsamlı bir mobil uygulama. Harcamalarınızı kategorize edin, bütçe hedeflerinizi takip edin.</p>
+            <div class="store-badges">
+                <a href="https://apps.apple.com/tr/app/budbudapp/id6740998554?l=tr" target="_blank">
+                    <img class="badge-appstore" src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.budbudapp" target="_blank">
+                    <img class="badge-playstore" src="https://play.google.com/intl/en_us/badges/static/images/badges/tr_badge_web_generic.png" alt="Google Play'den İndir">
+                </a>
+            </div>
+            <div class="app-other-links">
+                <a href="https://www.budbudapp.com" target="_blank" class="link-btn link-website">🌐 Web Sitesi</a>
+            </div>
+        </div>
+ 
+        <!-- BUDDA CV -->
+        <div class="app-card">
+            <div class="app-header">
+                <div class="app-icon app-icon-buddacv">📄</div>
+                <div>
+                    <div class="app-title">BUDDA CV</div>
+                    <div class="app-tagline">CV Hazırlama Uygulaması</div>
+                    <div class="app-badge badge-live">● Yayında</div>
+                </div>
+            </div>
+            <p class="app-desc">Profesyonel CV hazırlama ve selfie fotoğrafınızdan AI destekli CV fotoğrafı üretme mobil uygulaması. Dakikalar içinde etkileyici bir CV oluşturun.</p>
+            <div class="store-badges">
+                <a href="https://apps.apple.com/tr/app/budda-cv-cv-haz%C4%B1rlama/id6752897922?l=tr" target="_blank">
+                    <img class="badge-appstore" src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.cvhazirla.app.cv_hazirla" target="_blank">
+                    <img class="badge-playstore" src="https://play.google.com/intl/en_us/badges/static/images/badges/tr_badge_web_generic.png" alt="Google Play'den İndir">
+                </a>
+            </div>
+            <div class="app-other-links">
+                <a href="https://budda-cv.web.app/privacy-policy.html" target="_blank" class="link-btn link-privacy">🔒 Gizlilik Politikası</a>
+            </div>
+        </div>
+ 
+        <!-- Dilekçe -->
+        <div class="app-card">
+            <div class="app-header">
+                <div class="app-icon app-icon-dilekce">📝</div>
+                <div>
+                    <div class="app-title">Dilekçe Yaz – Talimat Oluştur</div>
+                    <div class="app-tagline">Dilekçe & Talimat Hazırlama Uygulaması</div>
+                    <div class="app-badge badge-soon">◉ Yakında</div>
+                </div>
+            </div>
+            <p class="app-desc">Dilekçe ve talimat hazırlamayı kolaylaştıran, hazır şablonlar sunan ve imzalı profesyonel PDF oluşturmayı sağlayan mobil uygulama. Metin tarama, çizim imza ve fotoğraf imza desteği.</p>
+            <div class="app-other-links">
+                <a href="dilekce-gizlilik-politikasi.html" class="link-btn link-privacy">🔒 Gizlilik Politikası</a>
+            </div>
+        </div>
+    </div>
+ 
     <div class="footer">
-        <p>Last updated: January 15, 2025</p>
+        <a href="mailto:kbasarangil@gmail.com" class="footer-contact">
+            <span>✉️</span> kbasarangil@gmail.com
+        </a>
+        <p class="copyright">© 2026 Kenan Başarangil. Tüm hakları saklıdır.</p>
     </div>
 </body>
 </html>
